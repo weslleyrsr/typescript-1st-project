@@ -4,14 +4,10 @@ export class Negotiations {
     private _negotiations: Array<Negotiation> = [];
 
     add(negotiation: Negotiation): void {
-        this.negotiations.push(negotiation)
+        this._negotiations.push(negotiation)
     }
 
-    remove(negotiation: Negotiation): void {
-        this._negotiations = this.negotiations.filter(item => item.id !== negotiation.id)
-    }
-
-    get negotiations(): Array<Negotiation> {
+    get negotiations(): ReadonlyArray<Negotiation> {
         return this._negotiations
     }
 
