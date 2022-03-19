@@ -1,4 +1,5 @@
 import { Negotiation } from "../models/Negotiation.js";
+import { Negotiations } from "../models/Negotiations.js";
 
 export class NegotiationController {
     private inputDate: HTMLInputElement;
@@ -32,9 +33,8 @@ export class NegotiationController {
         this.inputDate.focus();
     }
 
-    add(): void {
-        let negotiation = this.createNegotiation();
-        console.log(negotiation);
+    add(negotiations: Negotiations): void {
+        negotiations.add(this.createNegotiation());
         this.resetForm();
     }
 
