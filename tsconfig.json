@@ -5,7 +5,9 @@
         // JS version to be compiled
         "target": "ES6",
         // If the code have any error, no js is compiled to the output directory
-        "noEmitOnError": true
+        "noEmitOnError": true,
+        // TS Compiler won't add type Any when type is not implicit
+        "noImplicitAny": true
     },
     "include": [
         // TS files to compile
