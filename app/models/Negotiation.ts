@@ -1,7 +1,16 @@
 export class Negotiation {
     private _id: number;
 
-    constructor(private _date: Date, private _quantity: number, private _value: number) {
+    /*
+        As we declared our variables as private on the constructor parameters, we don't need to set each one of them inside the constructor
+        Getters not needed because we declared our variables as readonly
+    */
+
+    constructor (
+        private readonly date: Date,
+        private readonly quantity: number,
+        private readonly value: number
+    ) {
         this._id = new Date().getTime();
     }
 
@@ -9,19 +18,7 @@ export class Negotiation {
         return this._id;
     }
 
-    get date(): Date {
-        return this._date;
-    }
-
-    get quantity(): number {
-        return this._quantity;
-    }
-
-    get value(): number {
-        return this._value;
-    }
-
     get volume(): number {
-        return this._value * this._quantity;
+        return this.value * this.quantity;
     }
 }
