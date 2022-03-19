@@ -27,7 +27,7 @@ export class NegotiationController {
         return parseFloat(this.inputValue.value);
     }
 
-    get negotiationList(): Array<Negotiation> {
+    get negotiationList(): ReadonlyArray<Negotiation> {
         return this.negotiations.negotiations
     }
 
