@@ -1,16 +1,20 @@
 import { Negotiation } from "./Negotiation";
 
 export class Negotiations {
-    // private _negotiations: Array<Negotiation> = [];
-    // Simplified version of Array and generics syntax
+    /*
+        Simplified version of Array and generics syntax
+        private _negotiations: Array<Negotiation> = [];
+    */
     private _negotiations: Negotiation[] = [];
 
     add(negotiation: Negotiation): void {
         this._negotiations.push(negotiation)
     }
 
-    // get negotiations(): ReadonlyArray<Negotiation> {
-    // Simplified version on ReadonlyArray syntax
+    /*
+        Simplified version on ReadonlyArray syntax
+        get negotiations(): ReadonlyArray<Negotiation> {
+    */
     get negotiations(): readonly Negotiation[] {
         return this._negotiations
     }
