@@ -7,11 +7,23 @@ export class Negotiation {
     */
 
     constructor (
-        private readonly date: Date,
-        private readonly quantity: number,
-        private readonly value: number
+        private readonly _date: Date,
+        private readonly _quantity: number,
+        private readonly _value: number
     ) {
         this._id = new Date().getTime();
+    }
+
+    get date(): Date {
+        return this._date;
+    }
+
+    get quantity(): number {
+        return this._quantity;
+    }
+
+    get value(): number {
+        return this._value;
     }
 
     get id(): number {

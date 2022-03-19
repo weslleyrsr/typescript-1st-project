@@ -28,7 +28,8 @@ export class Negotiations {
                 <p> <span>Id:</span> ${negotiation.id} </p>
                 <p> <span>Date:</span> ${negotiation.date.toLocaleDateString()} </p>
                 <p> <span>Value:</span> ${negotiation.value} </p>
-                <p> <span>Volume:</span> ${negotiation.volume} </p>
+                <p> <span>Quantity:</span> ${negotiation.quantity} </p>
+                <p> <span>Volume:</span> $ ${negotiation.volume} </p>
             </div>
             `
         })
