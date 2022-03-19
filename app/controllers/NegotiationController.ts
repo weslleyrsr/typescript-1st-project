@@ -5,6 +5,7 @@ export class NegotiationController {
     private inputDate: HTMLInputElement;
     private inputQuantity: HTMLInputElement;
     private inputValue: HTMLInputElement;
+    private negotiations = new Negotiations;
 
     constructor() {
         this.inputDate = document.querySelector("#data");
@@ -26,6 +27,14 @@ export class NegotiationController {
         return parseFloat(this.inputValue.value);
     }
 
+    get negotiationList(): Array<Negotiation> {
+        return this.negotiations.negotiations
+    }
+
+    get negotiationsHtml(): string {
+        return this.negotiations.negotiationsHtml
+    }
+
     resetForm(): void {
         this.inputDate.value = "";
         this.inputQuantity.value = "1";
@@ -33,8 +42,8 @@ export class NegotiationController {
         this.inputDate.focus();
     }
 
-    add(negotiations: Negotiations): void {
-        negotiations.add(this.createNegotiation());
+    add(): void {
+        this.negotiations.add(this.createNegotiation());
         this.resetForm();
     }
 

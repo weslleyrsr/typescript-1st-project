@@ -15,8 +15,8 @@ export class Negotiations {
         return this._negotiations
     }
 
-    get negotiationsHtml(): Array<string> {
-        return this._negotiations.map(negotiation => {
+    get negotiationsHtml(): string {
+        let list = this._negotiations.map(negotiation => {
             return `
             <div class="negotiation">
                 <p> <span>Id:</span> ${negotiation.id} </p>
@@ -26,5 +26,7 @@ export class Negotiations {
             </div>
             `
         })
+
+        return list.join("");
     }
 }
