@@ -1,16 +1,20 @@
 import { Negotiation } from "../models/Negotiation.js";
 import { Negotiations } from "../models/Negotiations.js";
+import { NegotiationsView } from "../views/Negotiations-view.js";
+
 
 export class NegotiationController {
     private inputDate: HTMLInputElement;
     private inputQuantity: HTMLInputElement;
     private inputValue: HTMLInputElement;
     private negotiations = new Negotiations;
+    private negotiationsView = new NegotiationsView("#negotiations", this.negotiations);
 
     constructor() {
-        this.inputDate = document.querySelector("#data");
-        this.inputQuantity = document.querySelector("#quantidade");
-        this.inputValue = document.querySelector("#valor");
+        this.inputDate = document.querySelector("#date");
+        this.inputQuantity = document.querySelector("#quantity");
+        this.inputValue = document.querySelector("#value");
+        this.negotiationsView.update();
     }
 
     get date(): Date {
@@ -27,14 +31,6 @@ export class NegotiationController {
         return parseFloat(this.inputValue.value);
     }
 
-    get negotiationList(): ReadonlyArray<Negotiation> {
-        return this.negotiations.negotiations
-    }
-
-    get negotiationsHtml(): string {
-        return this.negotiations.negotiationsHtml
-    }
-
     resetForm(): void {
         this.inputDate.value = "";
         this.inputQuantity.value = "1";
@@ -45,6 +41,7 @@ export class NegotiationController {
     add(): void {
         this.negotiations.add(this.createNegotiation());
         this.resetForm();
+        this.negotiationsView.update();
     }
 
     createNegotiation(): Negotiation {
