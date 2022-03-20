@@ -1,15 +1,8 @@
-import { NegotiationController } from "./controllers/NegotiationController.js";
+import { NegociacaoController } from './controllers/negociacao-controller.js';
 
-const controller = new NegotiationController();
-const form = document.querySelector(".form");
-const negotiationsWrapper = document.querySelector("#negotiations");
-
-form.addEventListener("submit", event => {
+const controller = new NegociacaoController();
+const form = document.querySelector('.form');
+form.addEventListener('submit', event => {
     event.preventDefault();
-    controller.add();
-    renderNegotiations();
+    controller.adiciona();
 });
-
-function renderNegotiations(): void {
-    negotiationsWrapper.innerHTML = controller.negotiationsHtml;
-}
