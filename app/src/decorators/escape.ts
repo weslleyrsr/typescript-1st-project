@@ -6,7 +6,7 @@ export function Escape(
     const originalMethod = descriptor.value;
 
     descriptor.value = function(...args: any[]) {
-        // console.log("--- Running scape decorator")
+        console.log("--- Running scape decorator")
         const result = originalMethod.apply(this, args);
         if (typeof result === 'string') {
             result.replace(

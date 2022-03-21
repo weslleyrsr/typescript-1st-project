@@ -1,7 +1,5 @@
-import { toString } from "../utils/toString.js";
-export class Negotiations extends toString {
+export class Negotiations {
     constructor() {
-        super(...arguments);
         this._negotiations = [];
     }
     toString() {
