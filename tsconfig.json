@@ -9,7 +9,9 @@
         // TS Compiler won't add type Any when type is not implicit
         "noImplicitAny": true,
         // TS Compiler won't put your comments on the js files
-        "removeComments": true
+        "removeComments": true,
+        // TS Compiler will force you to handle props that can probably be null
+        "strictNullChecks": true
     },
     "include": [
         // TS files to compile
