@@ -1,16 +1,9 @@
 import { Negotiations } from "../models/Negotiations";
+import { View } from "./View.js";
 
-export class NegotiationsView {
+export class NegotiationsView extends View<Negotiations> {
 
-    private element: HTMLElement;
-    private negotiations: Negotiations;
-
-    constructor(selector: string, negotiations: Negotiations) {
-        this.element = document.querySelector(selector);
-        this.negotiations = negotiations;
-    }
-
-    template(): string {
+    protected template(negotiations: Negotiations): string {
         return `
             <table class="table table-hover table-bordered">
                 <thead>
@@ -24,10 +17,10 @@ export class NegotiationsView {
 
                 <tbody>
                     ${
-                        this.negotiations.list.map(negotiation => {
+                        negotiations.list.map(negotiation => {
                             return `
                                 <tr>
-                                    <td>${negotiation.date.toLocaleDateString()}</td>
+                                    <td>${this.dateParser(negotiation.date)}</td>
                                     <td>${negotiation.quantity}</td>
                                     <td>${negotiation.value}</td>
                                     <td>${negotiation.volume}</td>
@@ -40,7 +33,7 @@ export class NegotiationsView {
         `;
     }
 
-    update(): void {
-        this.element.innerHTML = this.template();
+    private dateParser(date: Date): string {
+        return date.toLocaleDateString();
     }
 }
