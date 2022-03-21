@@ -5,6 +5,7 @@ import { MessageView } from "../views/Message-view.js";
 import { ExecutionTimeLogger } from "../decorators/execution-time-logger.js";
 import { Detective } from "../decorators/detective.js";
 import { DomInjector } from "../decorators/dom-injector.js";
+import { DailyNegotiations } from "../interfaces/daily-negotiations.js";
 
 export class NegotiationController {
     @DomInjector("#date")
@@ -36,6 +37,24 @@ export class NegotiationController {
         } catch (error) {
             this.messageView.update(error, "error");
         }
+    }
+
+    async importData(): Promise<void> {
+        console.log("Import data");
+
+        const res: DailyNegotiations[] = await fetch("http://localhost:8080/dados").then(res => res.json());
+
+        res.map(item => {
+            this.negotiations.add(
+                new Negotiation(
+                    new Date(),
+                    item.vezes,
+                    item.montante
+                )
+            )
+        });
+
+        this.updateViews();
     }
 
     private resetForm(): void {
