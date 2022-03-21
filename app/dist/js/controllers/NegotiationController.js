@@ -9,14 +9,13 @@ import { Negotiations } from "../models/Negotiations.js";
 import { NegotiationsView } from "../views/Negotiations-view.js";
 import { MessageView } from "../views/Message-view.js";
 import { ExecutionTimeLogger } from "../decorators/execution-time-logger.js";
+import { Detective } from "../decorators/detective.js";
+import { DomInjector } from "../decorators/dom-injector.js";
 export class NegotiationController {
     constructor() {
         this.negotiations = new Negotiations;
         this.negotiationsView = new NegotiationsView("#negotiations");
         this.messageView = new MessageView("#mensagemView");
-        this.inputDate = document.querySelector("#date");
-        this.inputQuantity = document.querySelector("#quantity");
-        this.inputValue = document.querySelector("#value");
         this.negotiationsView.update(this.negotiations);
     }
     add() {
@@ -44,5 +43,15 @@ export class NegotiationController {
     }
 }
 __decorate([
-    ExecutionTimeLogger()
+    DomInjector("#date")
+], NegotiationController.prototype, "inputDate", void 0);
+__decorate([
+    DomInjector("#quantity")
+], NegotiationController.prototype, "inputQuantity", void 0);
+__decorate([
+    DomInjector("#value")
+], NegotiationController.prototype, "inputValue", void 0);
+__decorate([
+    ExecutionTimeLogger(),
+    Detective
 ], NegotiationController.prototype, "add", null);

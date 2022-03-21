@@ -3,23 +3,29 @@ import { Negotiations } from "../models/Negotiations.js";
 import { NegotiationsView } from "../views/Negotiations-view.js";
 import { MessageView } from "../views/Message-view.js";
 import { ExecutionTimeLogger } from "../decorators/execution-time-logger.js";
+import { Detective } from "../decorators/detective.js";
+import { DomInjector } from "../decorators/dom-injector.js";
 
 export class NegotiationController {
+    @DomInjector("#date")
     private inputDate: HTMLInputElement;
+
+    @DomInjector("#quantity")
     private inputQuantity: HTMLInputElement;
+
+    @DomInjector("#value")
     private inputValue: HTMLInputElement;
+
     private negotiations = new Negotiations;
     private negotiationsView = new NegotiationsView("#negotiations");
     private messageView = new MessageView("#mensagemView");
 
     constructor() {
-        this.inputDate = <HTMLInputElement> document.querySelector("#date");
-        this.inputQuantity = document.querySelector("#quantity") as HTMLInputElement;
-        this.inputValue = document.querySelector("#value") as HTMLInputElement;
         this.negotiationsView.update(this.negotiations);
     }
 
     @ExecutionTimeLogger()
+    @Detective
     add(): void {
         try {
             this.negotiations.add(
