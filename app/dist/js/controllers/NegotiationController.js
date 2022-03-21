@@ -20,6 +20,7 @@ import { MessageView } from "../views/Message-view.js";
 import { ExecutionTimeLogger } from "../decorators/execution-time-logger.js";
 import { Detective } from "../decorators/detective.js";
 import { DomInjector } from "../decorators/dom-injector.js";
+import { NegotiationsService } from "../services/negotiations-service.js";
 export class NegotiationController {
     constructor() {
         this.negotiations = new Negotiations;
@@ -29,7 +30,9 @@ export class NegotiationController {
     }
     add() {
         try {
-            this.negotiations.add(this.createNegotiation());
+            this.negotiations.add([
+                this.createNegotiation()
+            ]);
             this.resetForm();
             this.updateViews();
         }
@@ -40,10 +43,11 @@ export class NegotiationController {
     importData() {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("Import data");
-            const res = yield fetch("http://localhost:8080/dados").then(res => res.json());
-            res.map(item => {
-                this.negotiations.add(new Negotiation(new Date(), item.vezes, item.montante));
-            });
+            let dailyNegotiations = yield NegotiationsService.getDailyNegotiations();
+            console.log(this.negotiations);
+            console.log(dailyNegotiations);
+            this.negotiations.add(dailyNegotiations);
+            console.log(this.negotiations);
             this.updateViews();
         });
     }

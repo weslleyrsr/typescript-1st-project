@@ -5,7 +5,7 @@ import { MessageView } from "../views/Message-view.js";
 import { ExecutionTimeLogger } from "../decorators/execution-time-logger.js";
 import { Detective } from "../decorators/detective.js";
 import { DomInjector } from "../decorators/dom-injector.js";
-import { DailyNegotiations } from "../interfaces/daily-negotiations.js";
+import { NegotiationsService } from "../services/negotiations-service.js";
 
 export class NegotiationController {
     @DomInjector("#date")
@@ -29,9 +29,9 @@ export class NegotiationController {
     @Detective
     add(): void {
         try {
-            this.negotiations.add(
+            this.negotiations.add([
                 this.createNegotiation()
-            );
+            ]);
             this.resetForm();
             this.updateViews();
         } catch (error) {
@@ -41,19 +41,12 @@ export class NegotiationController {
 
     async importData(): Promise<void> {
         console.log("Import data");
-
-        const res: DailyNegotiations[] = await fetch("http://localhost:8080/dados").then(res => res.json());
-
-        res.map(item => {
-            this.negotiations.add(
-                new Negotiation(
-                    new Date(),
-                    item.vezes,
-                    item.montante
-                )
-            )
-        });
-
+        
+        let dailyNegotiations: Negotiation[] = await NegotiationsService.getDailyNegotiations();
+        console.log(this.negotiations)
+        console.log(dailyNegotiations)
+        this.negotiations.add(dailyNegotiations);
+        console.log(this.negotiations)
         this.updateViews();
     }
 

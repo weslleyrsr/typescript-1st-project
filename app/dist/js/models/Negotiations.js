@@ -2,8 +2,8 @@ export class Negotiations {
     constructor() {
         this._negotiations = [];
     }
-    add(negotiation) {
-        this._negotiations.push(negotiation);
+    add(negotiations) {
+        this._negotiations = this._negotiations.concat(negotiations);
     }
     get list() {
         return this._negotiations;

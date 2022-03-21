@@ -8,8 +8,8 @@ export class Negotiations {
     */
     private _negotiations: Negotiation[] = [];
 
-    add(negotiation: Negotiation): void {
-        this._negotiations.push(negotiation)
+    add(negotiations: Negotiation[]): void {
+        this._negotiations = this._negotiations.concat(negotiations)
     }
 
     /*
