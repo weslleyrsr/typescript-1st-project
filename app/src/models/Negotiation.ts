@@ -1,7 +1,7 @@
 import { WeekDays } from "../enums/week-days.js";
-import { toString } from "../utils/toString.js";
+import { toString } from "../interfaces/toString.js";
 
-export class Negotiation extends toString {
+export class Negotiation implements toString {
     private _id: number;
 
     constructor (
@@ -9,7 +9,6 @@ export class Negotiation extends toString {
         private _quantity: number,
         private _value: number
     ) {
-        super();
         this._id = new Date().getTime();
     }
 

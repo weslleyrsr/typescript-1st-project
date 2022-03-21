@@ -1,5 +1,5 @@
-import { Detective } from "../decorators/detective.js";
-import { ExecutionTimeLogger } from "../decorators/execution-time-logger.js";
+// import { Detective } from "../decorators/detective.js";
+// import { ExecutionTimeLogger } from "../decorators/execution-time-logger.js";
 
 export abstract class View<T> {
     protected element: HTMLElement;
@@ -15,8 +15,8 @@ export abstract class View<T> {
 
     protected abstract template(model: T, type?: string): string;
 
-    @ExecutionTimeLogger(true)
-    @Detective
+    // @ExecutionTimeLogger(true)
+    // @Detective
     update(model: T, type?: string): void {
         this.element.innerHTML = this.template(model, type);
     }

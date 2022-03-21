@@ -17,8 +17,6 @@ import { Negotiation } from "../models/Negotiation.js";
 import { Negotiations } from "../models/Negotiations.js";
 import { NegotiationsView } from "../views/Negotiations-view.js";
 import { MessageView } from "../views/Message-view.js";
-import { ExecutionTimeLogger } from "../decorators/execution-time-logger.js";
-import { Detective } from "../decorators/detective.js";
 import { DomInjector } from "../decorators/dom-injector.js";
 import { NegotiationsService } from "../services/negotiations-service.js";
 import { Log } from "../utils/Log.js";
@@ -72,7 +70,3 @@ __decorate([
 __decorate([
     DomInjector("#value")
 ], NegotiationController.prototype, "inputValue", void 0);
-__decorate([
-    ExecutionTimeLogger(),
-    Detective
-], NegotiationController.prototype, "add", null);

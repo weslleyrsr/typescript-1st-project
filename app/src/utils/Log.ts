@@ -1,4 +1,4 @@
-import { toString } from "./toString";
+import { toString } from "../interfaces/toString";
 
 export function Log(...items: toString[]): void {
     items.forEach(item => {

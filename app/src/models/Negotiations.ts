@@ -1,7 +1,7 @@
-import { toString } from "../utils/toString.js";
+import { toString } from "../interfaces/toString.js";
 import { Negotiation } from "./Negotiation.js";
 
-export class Negotiations extends toString {
+export class Negotiations implements toString {
     /*
         Simplified version of Array and generics syntax
             > private _negotiations: Array<Negotiation> = [];
