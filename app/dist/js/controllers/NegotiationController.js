@@ -42,12 +42,8 @@ export class NegotiationController {
     }
     importData() {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log("Import data");
             let dailyNegotiations = yield NegotiationsService.getDailyNegotiations();
-            console.log(this.negotiations);
-            console.log(dailyNegotiations);
             this.negotiations.add(dailyNegotiations);
-            console.log(this.negotiations);
             this.updateViews();
         });
     }

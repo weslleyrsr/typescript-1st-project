@@ -40,13 +40,8 @@ export class NegotiationController {
     }
 
     async importData(): Promise<void> {
-        console.log("Import data");
-        
         let dailyNegotiations: Negotiation[] = await NegotiationsService.getDailyNegotiations();
-        console.log(this.negotiations)
-        console.log(dailyNegotiations)
         this.negotiations.add(dailyNegotiations);
-        console.log(this.negotiations)
         this.updateViews();
     }
 
