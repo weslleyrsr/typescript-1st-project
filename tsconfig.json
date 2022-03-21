@@ -13,7 +13,9 @@
         // TS Compiler will force you to handle props that can probably be null
         "strictNullChecks": true,
         // TS Compiler will enable decorators
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        // TS Compiler will generate .map files to help debugging the app (should only be used at development environment)
+        "sourceMap": true
     },
     "include": [
         // TS files to compile
