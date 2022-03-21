@@ -6,6 +6,7 @@ import { ExecutionTimeLogger } from "../decorators/execution-time-logger.js";
 import { Detective } from "../decorators/detective.js";
 import { DomInjector } from "../decorators/dom-injector.js";
 import { NegotiationsService } from "../services/negotiations-service.js";
+import { Log } from "../utils/Log.js";
 
 export class NegotiationController {
     @DomInjector("#date")
@@ -42,6 +43,7 @@ export class NegotiationController {
     async importData(): Promise<void> {
         let dailyNegotiations: Negotiation[] = await NegotiationsService.getDailyNegotiations();
         this.negotiations.add(dailyNegotiations);
+        Log(this.negotiations);
         this.updateViews();
     }
 

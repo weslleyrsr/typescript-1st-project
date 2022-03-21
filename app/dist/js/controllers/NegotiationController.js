@@ -21,6 +21,7 @@ import { ExecutionTimeLogger } from "../decorators/execution-time-logger.js";
 import { Detective } from "../decorators/detective.js";
 import { DomInjector } from "../decorators/dom-injector.js";
 import { NegotiationsService } from "../services/negotiations-service.js";
+import { Log } from "../utils/Log.js";
 export class NegotiationController {
     constructor() {
         this.negotiations = new Negotiations;
@@ -44,6 +45,7 @@ export class NegotiationController {
         return __awaiter(this, void 0, void 0, function* () {
             let dailyNegotiations = yield NegotiationsService.getDailyNegotiations();
             this.negotiations.add(dailyNegotiations);
+            Log(this.negotiations);
             this.updateViews();
         });
     }
