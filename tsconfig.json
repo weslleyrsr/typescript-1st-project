@@ -11,7 +11,9 @@
         // TS Compiler won't put your comments on the js files
         "removeComments": true,
         // TS Compiler will force you to handle props that can probably be null
-        "strictNullChecks": true
+        "strictNullChecks": true,
+        // TS Compiler will enable decorators
+        "experimentalDecorators": true
     },
     "include": [
         // TS files to compile

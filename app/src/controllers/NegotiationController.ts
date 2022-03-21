@@ -2,6 +2,7 @@ import { Negotiation } from "../models/Negotiation.js";
 import { Negotiations } from "../models/Negotiations.js";
 import { NegotiationsView } from "../views/Negotiations-view.js";
 import { MessageView } from "../views/Message-view.js";
+import { ExecutionTimeLogger } from "../decorators/execution-time-logger.js";
 
 export class NegotiationController {
     private inputDate: HTMLInputElement;
@@ -18,6 +19,7 @@ export class NegotiationController {
         this.negotiationsView.update(this.negotiations);
     }
 
+    @ExecutionTimeLogger()
     add(): void {
         try {
             this.negotiations.add(

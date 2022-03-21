@@ -1,3 +1,5 @@
+import { ExecutionTimeLogger } from "../decorators/execution-time-logger.js";
+
 export abstract class View<T> {
     protected element: HTMLElement;
 
@@ -12,6 +14,7 @@ export abstract class View<T> {
 
     protected abstract template(model: T, type?: string): string;
 
+    @ExecutionTimeLogger()
     update(model: T, type?: string): void {
         this.element.innerHTML = this.template(model, type);
     }
