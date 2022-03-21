@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         // Directory where the compiled files are created
-        "outDir": "dist/js",
+        "outDir": "app/dist/js",
         // JS version to be compiled
         "target": "ES6",
         // If the code have any error, no js is compiled to the output directory
@@ -15,6 +15,6 @@
     },
     "include": [
         // TS files to compile
-        "app/**/*"
+        "app/src/**/*"
     ]
 }
