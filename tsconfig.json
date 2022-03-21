@@ -8,6 +8,7 @@
         "noEmitOnError": true,
         // TS Compiler won't add type Any when type is not implicit
         "noImplicitAny": true,
+        // TS Compiler won't put your comments on the js files
         "removeComments": true
     },
     "include": [
