@@ -1,4 +1,5 @@
 export interface DailyNegotiations {
     montante: number,
-    vezes: number
+    vezes: number,
+    id: number
 }

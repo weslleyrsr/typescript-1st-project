@@ -9,7 +9,8 @@ export class NegotiationsService {
             return new Negotiation(
                 new Date,
                 negotiation.vezes,
-                negotiation.montante
+                negotiation.montante,
+                negotiation.id
             )
         })
     }

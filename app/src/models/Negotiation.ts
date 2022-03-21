@@ -7,9 +7,14 @@ export class Negotiation implements toString {
     constructor (
         private _date: Date,
         private _quantity: number,
-        private _value: number
+        private _value: number,
+        id?: number
     ) {
-        this._id = new Date().getTime();
+        if(id) {
+            this._id = id;
+        } else {
+            this._id = new Date().getTime();
+        }
     }
 
     public toString(): string {

@@ -42,7 +42,21 @@ export class NegotiationController {
 
     async importData(): Promise<void> {
         let dailyNegotiations: Negotiation[] = await NegotiationsService.getDailyNegotiations();
-        this.negotiations.add(dailyNegotiations);
+
+        // This way I can handle sucess and errors at uploading, show a message perhabs
+        const success: Negotiation[] = [];
+        const error: Negotiation[] = [];
+
+        dailyNegotiations.forEach(negotiation => {
+            if(!this.negotiations.include(negotiation)) {
+                success.push(negotiation)
+            } else {
+                error.push(negotiation)
+            }
+        });
+
+        this.negotiations.add(success);
+
         Log(this.negotiations);
         this.updateViews();
     }

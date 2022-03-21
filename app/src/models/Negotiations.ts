@@ -8,13 +8,19 @@ export class Negotiations implements toString {
             > private _negotiations: Negotiation[] = [];
     */
     private _negotiations: Negotiation[] = [];
-    
+
     public toString(): string {
         return JSON.stringify(this.list, null, 2);
     }
 
     add(negotiations: Negotiation[]): void {
         this._negotiations = this._negotiations.concat(negotiations)
+    }
+
+    include(negotiation: Negotiation): boolean {
+        return this._negotiations.some(item => {
+            return item.id === negotiation.id
+        });
     }
 
     /*
