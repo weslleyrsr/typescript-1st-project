@@ -2,7 +2,12 @@ export abstract class View<T> {
     protected element: HTMLElement;
 
     constructor(selector: string) {
-        this.element = <HTMLInputElement> document.querySelector(selector);
+        const element = document.querySelector(selector);
+        if(element) {
+            this.element = element as HTMLElement;
+        } else {
+            throw new Error(`Selector ${selector} not found!`)
+        }
     }
 
     protected abstract template(model: T, type?: string): string;
