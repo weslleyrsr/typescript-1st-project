@@ -2,7 +2,6 @@ import { Negotiation } from "../models/Negotiation.js";
 import { Negotiations } from "../models/Negotiations.js";
 import { NegotiationsView } from "../views/Negotiations-view.js";
 import { MessageView } from "../views/Message-view.js";
-import { WeekDays } from "../enums/week-days.js";
 
 export class NegotiationController {
     private inputDate: HTMLInputElement;
@@ -17,20 +16,6 @@ export class NegotiationController {
         this.inputQuantity = document.querySelector("#quantity");
         this.inputValue = document.querySelector("#value");
         this.negotiationsView.update(this.negotiations);
-    }
-
-    get date(): Date {
-        return new Date(
-            this.inputDate.value.replace(/-/g, ",")
-        );
-    }
-
-    get quantity(): number {
-        return parseInt(this.inputQuantity.value);
-    }
-
-    get value(): number {
-        return parseFloat(this.inputValue.value);
     }
 
     add(): void {
@@ -53,20 +38,11 @@ export class NegotiationController {
     }
 
     private createNegotiation(): Negotiation {
-        // if (this.weekend.includes(this.date.getDay())) throw new Error("Negotiations can only be created on business days");
-        this.validateDate(this.date);
-
-        return new Negotiation(
-            this.date,
-            this.quantity,
-            this.value
+        return Negotiation.createFrom(
+            this.inputDate.value,
+            this.inputQuantity.value,
+            this.inputValue.value
         );
-    }
-
-    private validateDate(date: Date): void {
-        if (date.getDay() === WeekDays.SUNDAY || date.getDay() === WeekDays.SATURDAY) {
-            throw new Error("Negotiations can only be created on business days");
-        }
     }
 
     private updateViews(): void {

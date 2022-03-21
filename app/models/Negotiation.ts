@@ -1,3 +1,5 @@
+import { WeekDays } from "../enums/week-days.js";
+
 export class Negotiation {
     private _id: number;
 
@@ -40,5 +42,19 @@ export class Negotiation {
 
     get volume(): number {
         return this.value * this.quantity;
+    }
+
+    public static createFrom(dateString: string, quantityString: string, valueString: string) {
+        let date = new Date( dateString.replace(/-/g, ",") );
+        this.validateDate(date);
+        let quantity = parseInt(quantityString);
+        let value = parseFloat(valueString);
+        return new Negotiation(date, quantity, value)
+    }
+
+    private static validateDate(date: Date): void {
+        if (date.getDay() === WeekDays.SUNDAY || date.getDay() === WeekDays.SATURDAY) {
+            throw new Error("Negotiations can only be created on business days");
+        }
     }
 }
